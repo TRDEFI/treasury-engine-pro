@@ -285,7 +285,7 @@ function Problem() {
             </p>
           </div>
 
-          <Panel title="Comparison" meta="allocation models">
+          <Panel title="Comparison" meta="allocation models" className="self-start">
             <div className="divide-y divide-border">
               {[
                 { k: "Custodial yield desk", v: "Assets transferred", bad: true },
@@ -445,7 +445,7 @@ function Poc() {
             </div>
           </div>
 
-          <Panel title="PoC schedule" meta="D+0 → D+3">
+          <Panel title="PoC schedule" meta="D+0 → D+3" className="self-start">
             <div className="divide-y divide-border">
               {POC.map((p) => (
                 <div key={p.d} className="flex gap-5 px-5 py-5">

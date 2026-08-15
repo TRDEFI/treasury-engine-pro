@@ -214,3 +214,91 @@
 @utility live-dot {
   animation: pulse-dot 1.8s ease-in-out infinite;
 }
+
+/* --- Signal flow: close-tone animated color travel (keyboard-backlight feel) --- */
+:root {
+  --gradient-flow: linear-gradient(
+    100deg,
+    var(--signal) 0%,
+    var(--warn) 22%,
+    color-mix(in oklab, var(--signal) 70%, var(--positive)) 44%,
+    var(--signal) 66%,
+    var(--warn) 88%,
+    var(--signal) 100%
+  );
+}
+
+@keyframes signal-flow {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+@keyframes signal-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* Animated close-tone gradient text */
+@utility text-flow-signal {
+  background: var(--gradient-flow);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: signal-flow 9s linear infinite;
+}
+
+/* Thin animated rule / underline */
+@utility rule-flow {
+  background: var(--gradient-flow);
+  background-size: 200% 100%;
+  animation: signal-flow 7s linear infinite;
+}
+
+/* Border that breathes through close tones */
+@utility border-flow {
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    padding: 1px;
+    background: var(--gradient-flow);
+    background-size: 200% 100%;
+    animation: signal-flow 8s linear infinite;
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0.9;
+  }
+}
+
+/* Light sweep across a surface */
+@utility sweep-flow {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      100deg,
+      transparent 35%,
+      color-mix(in oklab, var(--signal) 16%, transparent) 50%,
+      transparent 65%
+    );
+    animation: signal-sweep 4.5s ease-in-out infinite;
+    pointer-events: none;
+  }
+}

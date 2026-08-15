@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Metric, Panel, SectionTag } from "@/components/trdefi/Panel";
+import logoAsset from "@/assets/trdefi-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -151,7 +152,14 @@ function TopBar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur">
       <div className="mx-auto flex h-14 max-w-6xl items-center gap-6 px-5">
-        <a href="#top" className="flex items-baseline gap-2">
+        <a href="#top" className="flex items-center gap-2.5">
+          <img
+            src={logoAsset.url}
+            alt="TRDEFI logo"
+            width={32}
+            height={32}
+            className="size-8 rounded-sm"
+          />
           <span className="font-mono text-sm font-semibold tracking-[0.28em] text-foreground">
             TRDEFI
           </span>
@@ -200,7 +208,7 @@ function Hero() {
         <h1 className="mt-7 max-w-3xl text-4xl leading-[1.05] font-semibold tracking-tight text-balance md:text-6xl">
           Idle stablecoin treasuries earn nothing.
           <br />
-          <span className="text-gradient-signal">TRDEFI puts them to work</span> — without
+          <span className="text-flow-signal">TRDEFI puts them to work</span> — without
           leaving your wallet.
         </h1>
 
@@ -213,7 +221,7 @@ function Hero() {
         <div className="mt-9 flex flex-wrap items-center gap-3">
           <a
             href="#contact"
-            className="inline-flex h-11 items-center bg-signal px-6 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
+            className="sweep-flow inline-flex h-11 items-center bg-signal px-6 font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
           >
             Request 3-day PoC
           </a>
@@ -354,7 +362,7 @@ function HowItWorks() {
               </div>
               <h3 className="mt-5 text-lg leading-snug font-semibold tracking-tight">{s.head}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.body}</p>
-              <div className="mt-6 border-l-2 border-signal-dim bg-surface px-3 py-2 font-mono text-[11px] text-foreground/80">
+              <div className="relative mt-6 overflow-hidden bg-surface px-3 py-2 font-mono text-[11px] text-foreground/80">
                 {s.trace}
               </div>
             </div>
@@ -432,7 +440,7 @@ function Poc() {
               positions accrue fees in a test environment, runs the revocation drill themselves, and
               keeps read-only dashboard access afterwards. Zero cost, zero capital at risk.
             </p>
-            <div className="mt-8 grid grid-cols-3 gap-px border border-border bg-border">
+            <div className="border-flow mt-8 grid grid-cols-3 gap-px border border-border bg-border">
               <div className="bg-surface">
                 <Metric label="Cost" value="$0" tone="positive" />
               </div>
@@ -534,7 +542,7 @@ function Contact() {
               </div>
               <button
                 type="submit"
-                className="inline-flex h-11 w-full items-center justify-center bg-signal font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
+                className="sweep-flow inline-flex h-11 w-full items-center justify-center bg-signal font-mono text-xs uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-90"
               >
                 Submit request
               </button>
@@ -554,7 +562,10 @@ function Footer() {
   return (
     <footer className="mx-auto max-w-6xl px-5 py-10">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <span className="font-mono text-sm tracking-[0.28em]">TRDEFI</span>
+        <div className="flex items-center gap-2.5">
+          <img src={logoAsset.url} alt="TRDEFI logo" width={24} height={24} className="size-6 rounded-sm" />
+          <span className="font-mono text-sm tracking-[0.28em]">TRDEFI</span>
+        </div>
         <p className="max-w-xl font-mono text-[10px] leading-relaxed tracking-wide text-muted-foreground">
           TRDEFI IS TREASURY INFRASTRUCTURE, NOT AN INVESTMENT PRODUCT. NO CUSTODY IS TAKEN. DIGITAL
           ASSET LIQUIDITY PROVISION INVOLVES SMART-CONTRACT AND MARKET RISK.

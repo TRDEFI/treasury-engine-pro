@@ -6,7 +6,7 @@ export function SectionTag({ index, children }: { index: string; children: React
     <div className="flex items-center gap-3">
       <span className="font-mono text-[11px] text-signal">{index}</span>
       <span className="label-mono">{children}</span>
-      <span className="h-px flex-1 bg-border" />
+      <span className="rule-flow h-px flex-1 opacity-40" />
     </div>
   );
 }
